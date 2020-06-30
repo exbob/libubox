@@ -22,9 +22,9 @@
 #include <syslog.h>
 
 enum {
-	ULOG_KMSG   = (1 << 0),
-	ULOG_SYSLOG = (1 << 1),
-	ULOG_STDIO  = (1 << 2)
+    ULOG_KMSG   = (1 << 0),
+    ULOG_SYSLOG = (1 << 1),
+    ULOG_STDIO  = (1 << 2)
 };
 
 void ulog_open(int channels, int facility, const char *ident);
@@ -33,7 +33,7 @@ void ulog_close(void);
 void ulog_threshold(int threshold);
 
 void ulog(int priority, const char *fmt, ...)
-	__attribute__ ((format (printf, 2, 3)));
+    __attribute__ ((format (printf, 2, 3)));
 
 #define ULOG_INFO(fmt, ...) ulog(LOG_INFO, fmt, ## __VA_ARGS__)
 #define ULOG_NOTE(fmt, ...) ulog(LOG_NOTICE, fmt, ## __VA_ARGS__)
