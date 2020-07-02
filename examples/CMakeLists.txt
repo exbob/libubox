@@ -14,4 +14,7 @@ IF (BUILD_EXAMPLES)
 
     ADD_EXECUTABLE(json_script-example json_script-example.c)
     TARGET_LINK_LIBRARIES(json_script-example ubox blobmsg_json json_script ${json})
+
+    ADD_EXECUTABLE(ulog-test ulog-test.c)
+    TARGET_LINK_LIBRARIES(ulog-test ubox)
 ENDIF()

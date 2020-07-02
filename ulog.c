@@ -107,10 +107,16 @@ __attribute__((format(printf, 2, 0)))
 static void ulog_stdio(int priority, const char *fmt, va_list ap)
 {
     FILE *out = stderr;
+    if (priority > LOG_ERR)
+        out = stdout;
 
     if (_ulog_ident)
-        fprintf(out, "%s: ", _ulog_ident);
-
+        fprintf(out, "%s ", _ulog_ident);
+    if (priority == LOG_DEBUG)
+        fprintf(out, "[%d][%s,%d]: ", priority,  __FILE__, __LINE__);
+    else
+        fprintf(out, "[%d]: ", priority);
+    
     vfprintf(out, fmt, ap);
 }
 
